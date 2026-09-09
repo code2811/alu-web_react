@@ -1,0 +1,10 @@
+#logo {
+  width: 200px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: 200px 200px;
+}
+
+h1 {
+  font-family: sans-serif;
+}
