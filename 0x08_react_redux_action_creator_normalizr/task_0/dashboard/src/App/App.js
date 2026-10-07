@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Login from '../Login/Login';
@@ -17,14 +18,19 @@ const listNotifications = [
   { id: 3, type: 'urgent', html: { __html: '<strong>Urgent requirement</strong> - complete by EOD' } },
 ];
 
-class App extends React.Component {
+export function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.get('isUserLoggedIn'),
+  };
+}
+
+export class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoggedIn: false };
   }
 
   render() {
-    const { isLoggedIn } = this.state;
+    const { isLoggedIn } = this.props;
     return (
       <>
         <Notifications listNotifications={listNotifications} />
@@ -40,4 +46,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
